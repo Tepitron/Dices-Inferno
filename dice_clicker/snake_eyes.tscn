@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn5lce842sx1m"]
+
+[ext_resource type="Script" uid="uid://bvwpf4og3hqvy" path="res://objects/snake_eyes.gd" id="1_8bm2o"]
+[ext_resource type="Texture2D" uid="uid://dc7252br7011e" path="res://sprites/snake_eyes.png" id="1_qt4ax"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cq8gi"]
+size = Vector2(167, 78)
+
+[node name="SnakeEyes" type="Node2D"]
+script = ExtResource("1_8bm2o")
+
+[node name="SnakeEyes" type="Sprite2D" parent="."]
+position = Vector2(40, 28)
+texture = ExtResource("1_qt4ax")
+region_enabled = true
+region_rect = Rect2(0, 0, 167, 81)
+
+[node name="Area2D" type="Area2D" parent="."]
+priority = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(40.5, 29)
+shape = SubResource("RectangleShape2D_cq8gi")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

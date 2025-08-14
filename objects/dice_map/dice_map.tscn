@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c363i12u7jpay"]
+
+[ext_resource type="PackedScene" uid="uid://q2s67epwmog2" path="res://objects/dicedude.tscn" id="1_ci67i"]
+[ext_resource type="Script" uid="uid://be8yg35tmfm8s" path="res://objects/dice_map.gd" id="1_lu7jt"]
+[ext_resource type="Texture2D" uid="uid://b2fdypxslmu55" path="res://sprites/Background.png" id="2_lu7jt"]
+
+[node name="DiceMap" type="Node2D"]
+script = ExtResource("1_lu7jt")
+
+[node name="DiceDude" parent="." instance=ExtResource("1_ci67i")]
+top_level = true
+
+[node name="Camera2D" type="Camera2D" parent="DiceDude"]
+scale = Vector2(1, 2)
+zoom = Vector2(4, 4)
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_lu7jt")
+
+[node name="spaces" type="Node2D" parent="."]

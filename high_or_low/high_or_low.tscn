@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://cndlvo5lsu1hp"]
+
+[ext_resource type="Script" uid="uid://cuqin1wu1eh2s" path="res://high_or_low/high_or_low.gd" id="1_xntfw"]
+[ext_resource type="PackedScene" uid="uid://ce5f680ls85lp" path="res://high_or_low/devil/devil.tscn" id="2_qb5f6"]
+[ext_resource type="PackedScene" uid="uid://b47nhf3gq0abf" path="res://high_or_low/player/player.tscn" id="3_ae4i6"]
+[ext_resource type="Texture2D" uid="uid://b2fdypxslmu55" path="res://sprites/Background.png" id="4_r5xsh"]
+
+[node name="HighOrLow" type="Node2D"]
+script = ExtResource("1_xntfw")
+
+[node name="Devil" parent="." instance=ExtResource("2_qb5f6")]
+position = Vector2(568, 73)
+
+[node name="Player" parent="." instance=ExtResource("3_ae4i6")]
+position = Vector2(565, 468)
+
+[node name="DebugPlayerThrowButton" type="Button" parent="."]
+offset_left = 886.0
+offset_top = 531.0
+offset_right = 1023.0
+offset_bottom = 608.0
+text = "THROW"
+
+[node name="GuessButtons" type="Node" parent="."]
+
+[node name="HigherButton" type="Button" parent="GuessButtons"]
+visible = false
+offset_left = 283.0
+offset_top = 339.0
+offset_right = 482.0
+offset_bottom = 421.0
+text = "HIGHER"
+
+[node name="LowerButton" type="Button" parent="GuessButtons"]
+visible = false
+offset_left = 684.0
+offset_top = 341.0
+offset_right = 885.0
+offset_bottom = 413.0
+text = "LOWER"
+
+[node name="PlayerPointsLabel" type="Label" parent="."]
+offset_left = -3.0
+offset_top = 404.0
+offset_right = 208.0
+offset_bottom = 471.0
+text = "Player Points:"
+
+[node name="PlayerPointsNumber" type="Label" parent="PlayerPointsLabel"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 49.0
+offset_right = 164.0
+offset_bottom = 109.0
+text = "0"
+
+[node name="DevilPointsLabel" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 228.0
+offset_right = 193.0
+offset_bottom = 311.0
+text = "DEVIL POINTS"
+
+[node name="DevilPointsNumber" type="Label" parent="DevilPointsLabel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 42.0
+offset_right = 131.0
+offset_bottom = 83.0
+text = "0"
+
+[node name="Background" type="Sprite2D" parent="DevilPointsLabel"]
+z_index = -1
+position = Vector2(573, 185)
+texture = ExtResource("4_r5xsh")
+
+[connection signal="pressed" from="DebugPlayerThrowButton" to="." method="_on_debug_player_throw_button_pressed"]
+[connection signal="pressed" from="GuessButtons/HigherButton" to="." method="_on_higher_button_pressed"]
+[connection signal="pressed" from="GuessButtons/LowerButton" to="." method="_on_lower_button_pressed"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://cptun5qo0o6vn"]
+
+[ext_resource type="Script" uid="uid://bsodf4xyb1u4p" path="res://dice_clicker/dice_clicker.gd" id="1_yfu4v"]
+[ext_resource type="PackedScene" uid="uid://c366wacbrivk" path="res://dice_clicker/ui.tscn" id="2_4vco5"]
+[ext_resource type="PackedScene" uid="uid://bjx0jojd2ak5s" path="res://objects/dice/dice.tscn" id="3_3dpe6"]
+[ext_resource type="Texture2D" uid="uid://b2fdypxslmu55" path="res://sprites/Background.png" id="4_pcu4m"]
+
+[sub_resource type="Animation" id="Animation_h2yge"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dices:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0xm2m"]
+resource_name = "dice_throw"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dices:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.51, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1bvp3"]
+_data = {
+&"RESET": SubResource("Animation_h2yge"),
+&"dice_throw": SubResource("Animation_0xm2m")
+}
+
+[node name="DiceClicker" type="Node2D"]
+scale = Vector2(0.996316, 1)
+script = ExtResource("1_yfu4v")
+
+[node name="UI" parent="." instance=ExtResource("2_4vco5")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="dices" type="Node2D" parent="."]
+scale = Vector2(0.991329, 0.979855)
+
+[node name="Dice" parent="dices" instance=ExtResource("3_3dpe6")]
+position = Vector2(579.137, 211.256)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1bvp3")
+}
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(705.599, 293)
+scale = Vector2(0.991329, 0.979855)
+texture = ExtResource("4_pcu4m")
+metadata/_edit_lock_ = true
+
+[node name="snakeEyes" type="Node" parent="."]
+
+[node name="SnakeEyeTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="DiceThrowCooldown" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="SnakeEyeTimer" to="." method="_on_snake_eye_timer_timeout"]
+[connection signal="timeout" from="DiceThrowCooldown" to="." method="_on_dice_throw_cooldown_timeout"]

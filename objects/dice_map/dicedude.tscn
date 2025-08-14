@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://q2s67epwmog2"]
+
+[ext_resource type="Script" uid="uid://6fndhy5sia1k" path="res://objects/dicedude.gd" id="1_gkw0j"]
+[ext_resource type="Texture2D" uid="uid://cjyjrwrprn12s" path="res://sprites/dicedude.png" id="1_vax6l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkw0j"]
+size = Vector2(42, 81)
+
+[node name="DiceDude" type="CharacterBody2D"]
+scale = Vector2(1, 0.5)
+script = ExtResource("1_gkw0j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(11, -10)
+texture = ExtResource("1_vax6l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_gkw0j")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpylvn50bvlqk"]
+
+[ext_resource type="Script" uid="uid://0jcvtegwqmrt" path="res://devil/devil_game.gd" id="1_kxwoq"]
+[ext_resource type="PackedScene" uid="uid://ce5f680ls85lp" path="res://devil/devil.tscn" id="2_r55ty"]
+[ext_resource type="PackedScene" uid="uid://b47nhf3gq0abf" path="res://player.tscn" id="3_7n24x"]
+
+[node name="DevilGame" type="Node2D"]
+script = ExtResource("1_kxwoq")
+
+[node name="Devil" parent="." instance=ExtResource("2_r55ty")]
+position = Vector2(568, 73)
+
+[node name="Player" parent="." instance=ExtResource("3_7n24x")]
+position = Vector2(565, 468)
+
+[node name="DebugPlayerThrowButton" type="Button" parent="."]
+offset_left = 886.0
+offset_top = 531.0
+offset_right = 1023.0
+offset_bottom = 608.0
+text = "THROW"
+
+[node name="GuessButtons" type="Node" parent="."]
+
+[node name="HigherButton" type="Button" parent="GuessButtons"]
+visible = false
+offset_left = 283.0
+offset_top = 339.0
+offset_right = 482.0
+offset_bottom = 421.0
+text = "HIGHER"
+
+[node name="LowerButton" type="Button" parent="GuessButtons"]
+visible = false
+offset_left = 684.0
+offset_top = 341.0
+offset_right = 885.0
+offset_bottom = 413.0
+text = "LOWER"
+
+[connection signal="pressed" from="DebugPlayerThrowButton" to="." method="_on_debug_player_throw_button_pressed"]
+[connection signal="pressed" from="GuessButtons/HigherButton" to="." method="_on_higher_button_pressed"]
+[connection signal="pressed" from="GuessButtons/LowerButton" to="." method="_on_lower_button_pressed"]

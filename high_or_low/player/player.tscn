@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b47nhf3gq0abf"]
+
+[ext_resource type="Script" uid="uid://bbycw5luvj2o0" path="res://high_or_low/player/player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://bjx0jojd2ak5s" path="res://objects/dice/dice.tscn" id="2_onrkg"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_4flbx")
+
+[node name="Dices" type="Node2D" parent="."]
+
+[node name="Dice" parent="Dices" instance=ExtResource("2_onrkg")]
+position = Vector2(-240, 90)
+
+[node name="Dice2" parent="Dices" instance=ExtResource("2_onrkg")]
+position = Vector2(-120, 90)
+
+[node name="Dice3" parent="Dices" instance=ExtResource("2_onrkg")]
+position = Vector2(0, 90)
+
+[node name="Dice4" parent="Dices" instance=ExtResource("2_onrkg")]
+position = Vector2(120, 90)
+
+[node name="Dice5" parent="Dices" instance=ExtResource("2_onrkg")]
+position = Vector2(240, 90)

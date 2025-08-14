@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt2rkivfwfbiw"]
+
+[ext_resource type="Script" uid="uid://btw2xtl8nxx8f" path="res://objects/space.gd" id="1_uhmnx"]
+[ext_resource type="Texture2D" uid="uid://coso7i0n25j6g" path="res://sprites/spaces.jpg" id="2_uhmnx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqtq6"]
+size = Vector2(50, 51)
+
+[node name="Space" type="Node2D"]
+script = ExtResource("1_uhmnx")
+
+[node name="Face" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_uhmnx")
+region_enabled = true
+region_rect = Rect2(256, 0, 256, 256)
+
+[node name="Top" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_uhmnx")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
+
+[node name="Area2D" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_gqtq6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://c366wacbrivk"]
+
+[ext_resource type="Script" uid="uid://cje777tgdrwb2" path="res://dice_clicker/ui.gd" id="1_nb4k0"]
+[ext_resource type="Texture2D" uid="uid://coxjj3itujs7t" path="res://sprites/shop_button.jpg" id="2_ks8t7"]
+[ext_resource type="Script" uid="uid://bivfednmerjnc" path="res://dice_clicker/shop.gd" id="2_wl5ax"]
+[ext_resource type="Texture2D" uid="uid://dsrfa8ns8mt8d" path="res://sprites/shop_buttons.jpg" id="3_vkava"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nb4k0")
+
+[node name="DiceThrow" type="Button" parent="."]
+layout_mode = 2
+offset_left = 538.0
+offset_top = 558.0
+offset_right = 633.0
+offset_bottom = 589.0
+size_flags_vertical = 8
+text = "Throw Dice"
+
+[node name="PointsText" type="Label" parent="."]
+layout_mode = 2
+offset_left = 905.0
+offset_top = 615.0
+offset_right = 977.0
+offset_bottom = 638.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Gamblys:"
+
+[node name="PointsLabel" type="Label" parent="PointsText"]
+layout_mode = 2
+offset_left = 82.0
+offset_top = 1.0
+offset_right = 184.0
+offset_bottom = 40.0
+size_flags_horizontal = 8
+
+[node name="Shop" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_wl5ax")
+
+[node name="NewDiceButton" type="Button" parent="Shop"]
+visible = false
+layout_mode = 0
+offset_left = 870.0
+offset_top = 434.0
+offset_right = 1077.0
+offset_bottom = 559.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Shop/NewDiceButton"]
+position = Vector2(104, 64)
+scale = Vector2(0.888889, 0.901408)
+texture = ExtResource("3_vkava")
+region_enabled = true
+region_rect = Rect2(17.1688, 36.4767, 234.256, 142.018)
+
+[node name="AutoThrowButton" type="Button" parent="Shop"]
+visible = false
+layout_mode = 0
+offset_left = 849.0
+offset_top = 312.0
+offset_right = 1097.0
+offset_bottom = 412.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Shop/AutoThrowButton"]
+position = Vector2(124, 51)
+texture = ExtResource("3_vkava")
+region_enabled = true
+region_rect = Rect2(10.5106, 207.785, 250.852, 99.9684)
+
+[node name="ShopButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 843.0
+offset_top = 141.0
+offset_right = 1051.0
+offset_bottom = 249.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+icon = ExtResource("2_ks8t7")
+
+[node name="DEBUG_ADD_POINTS" type="Button" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 578.0
+offset_right = 179.0
+offset_bottom = 609.0
+text = "DEBUG +100 points"
+
+[node name="TotalAmountLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 282.0
+offset_right = 668.0
+offset_bottom = 372.0
+
+[node name="MultiplierLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 110.0
+offset_top = 9.0
+offset_right = 628.0
+offset_bottom = 96.0
+
+[connection signal="pressed" from="DiceThrow" to="." method="_on_dice_throw_pressed"]
+[connection signal="pressed" from="Shop/NewDiceButton" to="Shop" method="_on_new_dice_button_pressed"]
+[connection signal="pressed" from="ShopButton" to="Shop" method="_on_shop_button_pressed"]
+[connection signal="pressed" from="DEBUG_ADD_POINTS" to="." method="_on_debug_add_points_pressed"]

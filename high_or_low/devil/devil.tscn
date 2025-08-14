@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce5f680ls85lp"]
+
+[ext_resource type="Script" uid="uid://b3vx3p5niqkm0" path="res://high_or_low/devil/devil.gd" id="1_hvhvj"]
+[ext_resource type="Texture2D" uid="uid://bk14jrjfgoeue" path="res://sprites/eye.png" id="2_x6wj1"]
+[ext_resource type="PackedScene" uid="uid://bjx0jojd2ak5s" path="res://objects/dice/dice.tscn" id="3_epkhc"]
+
+[node name="Devil" type="Node2D"]
+scale = Vector2(1, 0.990626)
+script = ExtResource("1_hvhvj")
+
+[node name="Dices" type="Node2D" parent="."]
+position = Vector2(0, 40)
+
+[node name="Dice" parent="Dices" instance=ExtResource("3_epkhc")]
+position = Vector2(-240, 90)
+
+[node name="Dice2" parent="Dices" instance=ExtResource("3_epkhc")]
+position = Vector2(-118, 159.874)
+
+[node name="Dice3" parent="Dices" instance=ExtResource("3_epkhc")]
+position = Vector2(13, 223.47)
+
+[node name="Dice4" parent="Dices" instance=ExtResource("3_epkhc")]
+position = Vector2(133, 138.675)
+
+[node name="Dice5" parent="Dices" instance=ExtResource("3_epkhc")]
+position = Vector2(250, 74.0693)
+
+[node name="Eye2" type="Sprite2D" parent="."]
+position = Vector2(138, -20.1893)
+rotation = 0.15999
+texture = ExtResource("2_x6wj1")
+flip_h = true
+
+[node name="Eye" type="Sprite2D" parent="."]
+position = Vector2(-122, -23.2176)
+rotation = -0.339279
+texture = ExtResource("2_x6wj1")

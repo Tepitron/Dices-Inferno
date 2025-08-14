@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjx0jojd2ak5s"]
+
+[ext_resource type="Script" uid="uid://tbbuevuw5hc6" path="res://objects/dice/dice.gd" id="1_egm6u"]
+[ext_resource type="Texture2D" uid="uid://oh25faxcej88" path="res://sprites/dice_set_sprite.png" id="1_t4kh0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egm6u"]
+atlas = ExtResource("1_t4kh0")
+region = Rect2(2, 1, 104, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnbbt"]
+atlas = ExtResource("1_t4kh0")
+region = Rect2(130, 0, 103, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0e0d"]
+atlas = ExtResource("1_t4kh0")
+region = Rect2(259, 0, 103, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3hfy"]
+atlas = ExtResource("1_t4kh0")
+region = Rect2(2, 126, 103, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyaa5"]
+atlas = ExtResource("1_t4kh0")
+region = Rect2(130, 126, 103, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo6y2"]
+atlas = ExtResource("1_t4kh0")
+region = Rect2(259, 126, 103, 104)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1o7li"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egm6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnbbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0e0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3hfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyaa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo6y2")
+}],
+"loop": true,
+"name": &"side_set",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo6y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnbbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyaa5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egm6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0e0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3hfy")
+}],
+"loop": true,
+"name": &"throw",
+"speed": 5.0
+}]
+
+[node name="Dice" type="Node2D"]
+script = ExtResource("1_egm6u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_1o7li")
+animation = &"side_set"
+
+[node name="PointsLabel" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -88.0
+offset_right = 25.0
+offset_bottom = -65.0

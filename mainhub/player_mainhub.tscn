@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://uc4fpt15by5y"]
+
+[ext_resource type="Script" uid="uid://sm1yh1xdesv3" path="res://mainhub/player_mainhub.gd" id="1_d6vuu"]
+[ext_resource type="Texture2D" uid="uid://cjyjrwrprn12s" path="res://sprites/dicedude.png" id="2_lpl5e"]
+
+[node name="PlayerMainhub" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_d6vuu")
+
+[node name="Dicedude" type="Sprite2D" parent="."]
+scale = Vector2(0.67, 0.54)
+texture = ExtResource("2_lpl5e")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.67, 0.54)
+polygon = PackedVector2Array(-7, -34, -28, -34, -28, -31.8, -28.8, -31, -31.5, -31, -28, -14.6, -33, 7.8, -33, 14.6, -25.1, 16.2, -33.7, 22, -36, 22, -36, 30.9, -30.4, 35.5, -33, 38.2, -33, 41.8, -27.8, 47, -23.1, 47, -12.1, 35, -2.4, 50, 12, 50, 8, 36.7, 9, 35.8, 9, 26.2, -0.700001, 16.5, 2.9, 17, 7.8, 17, 10.8, 14, 13.1, 14, 12, -19.1, 12, -22.2, -7, -32.3)
